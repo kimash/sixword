@@ -1,10 +1,13 @@
 # Six Word Headlines
 
-Schema for MongoDB will be stored in: **/models**
+Melissa: Schema for MongoDB will be stored in: **/models**
 
-JavaScript will be stored in: **/static/js**
+Hanna: JavaScript will be stored in: **/static/js**
 
+CSS will be stored in: **/static/css**
 
+Example files in: **/views/blog**
+These will be removed/changed as we build and configure our app.
 
 # Setup
 Heroku and MongoLab have provided a mongodb:// connection string in your Heroku config. This is your "username and password" to get access. We can keep the connection string out of the code and private by putting it inside a .env environment variable file. 
