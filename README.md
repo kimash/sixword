@@ -1,30 +1,9 @@
-Blog example with Passport user authentication
+# Six Word Headlines
 
-Building off of DWD basic user authentication example -
-https://github.com/johnschimmel/DWD-User-Authentication
+Schema for MongoDB will be stored in **/models/
+JavaScript will be stored in **/static/js/
 
-Once running you can create a new entry at /new-entry. This will prompt you to login.
-
-## Todo
-
-Blog posts can be updated by any user right now, this needs to be fixed so only the owner of the entry can update the content.
-
-# Getting started
-
-Inside directory, 
-
-    git init
-
-If you haven't already, create a new app on Heroku (cedar), this will add an additional remote GIT path to Heroku. (Assumes you have [Heroku Toolbelt](https://toolbelt.heroku.com/) installed)
-
-	heroku create --stack cedar
-
-# Set up MongoDB and .env
-
-Add free [MongoLab account add-on](https://addons.heroku.com/mongolab) for your MongoDB 
-
-	heroku addons:add mongolab:starter
-
+# Setup
 Heroku and MongoLab have provided a mongodb:// connection string in your Heroku config. This is your "username and password" to get access. We can keep the connection string out of the code and private by putting it inside a .env environment variable file. 
 
 **If you already have an existing MONGOLAB account set up you can copy the .env file into this directory.**
