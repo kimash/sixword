@@ -3,7 +3,7 @@
 var passport = require('passport');
 
 // Route methods
-
+var siteRoute = require('./routes/site');
 var blogRoute = require('./routes/blog');
 var userRoute = require('./routes/user');
 
@@ -17,10 +17,21 @@ function ensureAuthenticated(request, response, next) {
 
 module.exports = function(app) {
 
+	/*********** SITE ROUTES ************/
+    // main page - display all blog posts
+    // More Mongoose query information here - http://mongoosejs.com/docs/finding-documents.html
+    app.get('/', siteRoute.mainpage );
+    
+    //get most recent
+    app.get("/recent", blogRoute.recent);
+    
+    // Display a single blog post
+    app.get('/entry/:urlslug', blogRoute.getSingleEntry);	
+
     /*********** BLOG ROUTES ************/
     // main page - display all blog posts
     // More Mongoose query information here - http://mongoosejs.com/docs/finding-documents.html
-    app.get('/', blogRoute.mainpage );
+    //app.get('/', blogRoute.mainpage );
     
     //get most recent
     app.get("/recent", blogRoute.recent);
