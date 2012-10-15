@@ -28,34 +28,44 @@ module.exports = {
 
     },
     
-    recent : function(request, response){
+	//display new entry form /new-entry
+    getNewPic : function(request, response){
+        //display the picture entry form
+        templateData = {
+            currentUser : request.user
+        }
+        
+        response.render('site/addpic.html', templateData);
+    },
+    
+    // receive form POST for new entry /new-entry
+    postNewPic : function(request, response){
 
-        // create date variable for 7 days ago
-        var lastWeek = new Date();
-        lastWeek.setDate(-7);
+        console.log('Received new picture submission');
+        console.log(request.body);
 
-        // query for all blog posts where the date is greater than or equal to 7 days ago
-        var query = db.BlogPost.find({ date : { $gte: lastWeek }});
-        query.populate('author');
-        query.sort('date',-1);
-        query.exec(function (err, recentPosts) {
+        // Prepare the blog post entry form into a data object
+        var picData = {
+            url : request.body.url,
+            author : request.user._id
+        };
 
+        // create a new blog post
+        var post = new db.Picture(picData);
 
-          // prepare template data
-          templateData = {
-              posts : recentPosts
-          };
+        // save the blog post
+        post.save();
 
-          // render the card_form template with the data above
-          response.render('blog/recent_posts.html', templateData);
-
-        });
+        // redirect to show the single post
+       // response.redirect('/entry/' + blogPostData.urlslug); // for example /entry/this-is-a-post
 
     },
     
-    getSingleEntry : function(request, response){
-        // Get the request blog post by urlslug
-        db.BlogPost.findOne({ urlslug : request.params.urlslug }).populate('author').run(function(err, blogpost){
+        getPicById : function(request, response) {
+
+        var requestedPostID = request.params.postId;
+
+        db.BlogPost.findById( requestedPostID).populate("author").run(function(err, blogpost) {
 
             if (err) {
                 console.log(err);
@@ -67,7 +77,6 @@ module.exports = {
                 response.send("uh oh, can't find that post");
 
             } else {
-
                 //determine if current user is the owner of the entry
                 if (typeof request.user != "undefined" && (request.user._id.toString() == blogpost.author._id.toString()) ) {
                     isOwner = true;
@@ -84,10 +93,10 @@ module.exports = {
                 console.log(templateData);
                 
                 response.render('blog/blog_single_entry.html', templateData);
-                
             }
-        });
+
+        })
+
     },
-    
   
 }

@@ -18,16 +18,23 @@ function ensureAuthenticated(request, response, next) {
 module.exports = function(app) {
 
 	/*********** SITE ROUTES ************/
-    // main page - display all blog posts
+    // main page - display all pictures => change to newest?
     // More Mongoose query information here - http://mongoosejs.com/docs/finding-documents.html
     app.get('/', siteRoute.mainpage );
     
-    //get most recent
-    app.get("/recent", blogRoute.recent);
+    // add new picture to database
+    app.get('/addPic', ensureAuthenticated, siteRoute.getNewPic);
     
-    // Display a single blog post
-    app.get('/entry/:urlslug', blogRoute.getSingleEntry);	
-
+    // receive picture form submission
+    app.post('/addPic', ensureAuthenticated, siteRoute.postNewPic);
+    
+    // .findById example
+    // Get a picture by its unique objectId (._id)
+    //app.get("/findPic/:picId", siteRoute.getPicById);
+    
+    // add a comment to a blog post
+    //app.post('/caption', siteRoute.postCaption );
+    
     /*********** BLOG ROUTES ************/
     // main page - display all blog posts
     // More Mongoose query information here - http://mongoosejs.com/docs/finding-documents.html
