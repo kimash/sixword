@@ -8,8 +8,8 @@
     font-size: 18px;
     font-family: Helvetica, Arial, sans-serif;
     font-weight:normal;
-    color: white;
-    background-color:   #313136
+    color: #085476;
+    background-color:   #BACECC
     }
     
 h1,h2,h3{
@@ -17,7 +17,7 @@ h1,h2,h3{
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
-    color: white;
+    color: #085476;
     background: gray;
 }
 
