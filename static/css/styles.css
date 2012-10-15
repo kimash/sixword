@@ -1,17 +1,54 @@
-body { 
-    background: #fff;
+
+ body {
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding:0;
+    
+    font-size: 18px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:normal;
+    color: white;
+    background-color:   #313136
+    }
+    
+h1,h2,h3{
+    margin-top: 50px;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: white;
+    background: gray;
 }
 
-a { 
-    color: #00c;
-    text-decoration: underline;
+h1{
+    font-size: 36px;
+    
 }
 
-
-input { height: 18px;}
-
-textarea {
-    width:610px;
-    height:200px;
+h2{
+    font-size: 26px;
 }
 
+h3{
+    font-size: 22px;
+}
+
+p,ul{
+    margin-top:0;
+    text-align: left;
+    line-height: 180%;
+}
+#top{
+    border-width: 50px,100px,50px,100px;
+    margin-top: 10;
+    padding: 50;
+    margin-left: 50;
+    margin-right: 50;
+    margin-bottom: 10;
+    text-align: center;
+    background: gray;
+}
+#skill{
+    background: gray;
+}
