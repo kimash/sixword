@@ -14,7 +14,7 @@ module.exports = {
         query.populate('author');
         query.sort('date',-1); //sort by date in descending order
         
-        // run the query and display blog_main.html template if successful
+        // run the query and display main.html template if successful
         query.exec({}, function(err, allPosts){
             // prepare template data
             templateData = {
