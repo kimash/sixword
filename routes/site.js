@@ -44,59 +44,51 @@ module.exports = {
         console.log('Received new picture submission');
         console.log(request.body);
 
-        // Prepare the blog post entry form into a data object
+        // Prepare the picture entry form into a data object
         var picData = {
             url : request.body.url,
             author : request.user._id
         };
 
-        // create a new blog post
-        var post = new db.Picture(picData);
+        // add a new picture link to the database
+        var picture = new db.Picture(picData);
 
-        // save the blog post
-        post.save();
+        // save the picture
+        picture.save();
 
         // redirect to show the single post
-       // response.redirect('/entry/' + blogPostData.urlslug); // for example /entry/this-is-a-post
+       // response.redirect('/entry/' + blogPostData.urlslug);
 
     },
     
-        getPicById : function(request, response) {
-
-        var requestedPostID = request.params.postId;
-
-        db.BlogPost.findById( requestedPostID).populate("author").run(function(err, blogpost) {
-
-            if (err) {
-                console.log(err);
-                response.send("an error occurred!");
-            }
-
-            if (blogpost == null ) {
-                console.log('post not found');
-                response.send("uh oh, can't find that post");
-
-            } else {
-                //determine if current user is the owner of the entry
-                if (typeof request.user != "undefined" && (request.user._id.toString() == blogpost.author._id.toString()) ) {
-                    isOwner = true;
-                } else {
-                    isOwner = false;
-                }
-                
-                templateData = {
-                    user_is_owner : isOwner,
-                    blogpost : blogpost,
-                    layout : 'layout_single_entry.html'// use single entry layout
-                    
-                }
-                console.log(templateData);
-                
-                response.render('blog/blog_single_entry.html', templateData);
-            }
-
-        })
-
-    },
+ //  getPicById : function(request, response) {
+// 
+//       var requestedPicID = request.params.picId;
+// 
+//       db.Picture.findById(requestedPicID).run(function(err, picture) {
+// 
+//             if (err) {
+//               console.log(err);
+//               response.send("an error occurred!");
+//             }
+// 
+//           if (picture == null ) {
+//                console.log('pic not found');
+//                 response.send("uh oh, can't find that pic");
+// 
+//             } 
+//                 templateData = {
+//                     picture : picture,
+//                     layout : 'layout_single_entry.html'// use single entry layout
+//                     
+//                 }
+//                 console.log(templateData);
+//                 
+//                 response.render('blog/blog_single_entry.html', templateData);
+//             }
+// 
+//         })
+// 
+//     },
   
 }

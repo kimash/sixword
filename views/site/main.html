@@ -1,22 +1,17 @@
-<img src="../img/logo.jpg"/>	<!--should be a png-->
+<div class="logo" id="top">
+<img src="../img/logotrans.png"/>
+</div>
+
 <h1>Six words can tell a story.</h1>
 <br><br>
 <% for(i=0; i<posts.length; i++) { %>
-<div class="row">
-
-    <div class="span12">
-
+<div class="todaysPic">
         <h2>
             <a href="/entry/<%= posts[i].urlslug %>">
                 <%= posts[i].title %>
             </a>
         </h2>
-        <small>
-            <a href="/entryById/<%= posts[i]._id %>">View by objectId ( <%= posts[i]._id %>)</a>
-        </small>
         <br>
-        
-    </div>
 </div>
 
 <% } %>
