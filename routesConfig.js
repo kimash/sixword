@@ -22,12 +22,12 @@ module.exports = function(app) {
     // More Mongoose query information here - http://mongoosejs.com/docs/finding-documents.html
     app.get('/', siteRoute.mainpage );
     
-    //get most recent
-    app.get("/recent", blogRoute.recent);
+    // CREATE A NEW BLOG POST
+    app.get('/addpic', ensureAuthenticated, siteRoute.getAddPic);
     
-    // Display a single blog post
-    app.get('/entry/:urlslug', blogRoute.getSingleEntry);	
-
+    // receive a form submission
+    app.post('/addpic', ensureAuthenticated, siteRoute.getAddPic);
+    
     /*********** BLOG ROUTES ************/
     // main page - display all blog posts
     // More Mongoose query information here - http://mongoosejs.com/docs/finding-documents.html

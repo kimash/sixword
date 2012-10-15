@@ -28,66 +28,37 @@ module.exports = {
 
     },
     
-    recent : function(request, response){
-
-        // create date variable for 7 days ago
-        var lastWeek = new Date();
-        lastWeek.setDate(-7);
-
-        // query for all blog posts where the date is greater than or equal to 7 days ago
-        var query = db.BlogPost.find({ date : { $gte: lastWeek }});
-        query.populate('author');
-        query.sort('date',-1);
-        query.exec(function (err, recentPosts) {
-
-
-          // prepare template data
-          templateData = {
-              posts : recentPosts
-          };
-
-          // render the card_form template with the data above
-          response.render('blog/recent_posts.html', templateData);
-
-        });
-
+	//display new entry form /new-entry
+    getAddPic : function(request, response){
+        //display the picture entry form
+        templateData = {
+            currentUser : request.user
+        }
+        
+        response.render('site/addpic.html', templateData);
     },
     
-    getSingleEntry : function(request, response){
-        // Get the request blog post by urlslug
-        db.BlogPost.findOne({ urlslug : request.params.urlslug }).populate('author').run(function(err, blogpost){
+    // receive form POST for new entry /new-entry
+    postAddPic : function(request, response){
 
-            if (err) {
-                console.log(err);
-                response.send("an error occurred!");
-            }
+        console.log('Received new picture submission');
+        console.log(request.body);
 
-            if (blogpost == null ) {
-                console.log('post not found');
-                response.send("uh oh, can't find that post");
+        // Prepare the blog post entry form into a data object
+        var picData = {
+            url : request.body.url,
+            author : request.user._id
+        };
 
-            } else {
+        // create a new blog post
+        var post = new db.Picture(picData);
 
-                //determine if current user is the owner of the entry
-                if (typeof request.user != "undefined" && (request.user._id.toString() == blogpost.author._id.toString()) ) {
-                    isOwner = true;
-                } else {
-                    isOwner = false;
-                }
-                
-                templateData = {
-                    user_is_owner : isOwner,
-                    blogpost : blogpost,
-                    layout : 'layout_single_entry.html'// use single entry layout
-                    
-                }
-                console.log(templateData);
-                
-                response.render('blog/blog_single_entry.html', templateData);
-                
-            }
-        });
+        // save the blog post
+        post.save();
+
+        // redirect to show the single post
+       // response.redirect('/entry/' + blogPostData.urlslug); // for example /entry/this-is-a-post
+
     },
-    
   
 }
