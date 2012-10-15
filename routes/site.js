@@ -29,7 +29,7 @@ module.exports = {
     },
     
 	//display new entry form /new-entry
-    getAddPic : function(request, response){
+    getNewPic : function(request, response){
         //display the picture entry form
         templateData = {
             currentUser : request.user
@@ -39,7 +39,7 @@ module.exports = {
     },
     
     // receive form POST for new entry /new-entry
-    postAddPic : function(request, response){
+    postNewPic : function(request, response){
 
         console.log('Received new picture submission');
         console.log(request.body);
@@ -58,6 +58,44 @@ module.exports = {
 
         // redirect to show the single post
        // response.redirect('/entry/' + blogPostData.urlslug); // for example /entry/this-is-a-post
+
+    },
+    
+        getPicById : function(request, response) {
+
+        var requestedPostID = request.params.postId;
+
+        db.BlogPost.findById( requestedPostID).populate("author").run(function(err, blogpost) {
+
+            if (err) {
+                console.log(err);
+                response.send("an error occurred!");
+            }
+
+            if (blogpost == null ) {
+                console.log('post not found');
+                response.send("uh oh, can't find that post");
+
+            } else {
+                //determine if current user is the owner of the entry
+                if (typeof request.user != "undefined" && (request.user._id.toString() == blogpost.author._id.toString()) ) {
+                    isOwner = true;
+                } else {
+                    isOwner = false;
+                }
+                
+                templateData = {
+                    user_is_owner : isOwner,
+                    blogpost : blogpost,
+                    layout : 'layout_single_entry.html'// use single entry layout
+                    
+                }
+                console.log(templateData);
+                
+                response.render('blog/blog_single_entry.html', templateData);
+            }
+
+        })
 
     },
   
