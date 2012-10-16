@@ -1,6 +1,6 @@
 // Module dependencies
 var mongoose = require('mongoose');
-var	Schema = mongoose.Schema;
+var  Schema = mongoose.Schema;
 
 // dependencies for authentication
 var passport = require('passport')
@@ -12,6 +12,9 @@ require('./models/blogpost').configureSchema(Schema, mongoose);
 // Define your DB Model variables
 var BlogPost = mongoose.model('BlogPost');
 var Comment = mongoose.model('Comment');
+
+require('./models/picture').configureSchema(Schema, mongoose);
+var Picture = mongoose.model('Picture');
 
 //Alternative way to load model
 var User = require('./models/user'); // User model
@@ -52,6 +55,8 @@ module.exports = {
   User : User,
   BlogPost : BlogPost,
   Comment : Comment,
+
+  Picture : Picture,
 
   // DB Helper functions
   // initialize DB
