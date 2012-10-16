@@ -8,7 +8,7 @@ var db = require('../accessDB');
 module.exports = {
 
     mainpage : function(request, response) {
-    
+    //Change query to findOne for today's picture. Below is a placeholder.
      // build the query
         var query = db.BlogPost.find({});
         query.populate('author');
@@ -21,14 +21,14 @@ module.exports = {
                 posts : allPosts
             };
 
-            // render the card_form template with the data above
+            // render the template with the data above
             response.render('site/main.html', templateData);
 
         });
 
     },
     
-	//display new entry form /new-entry
+	//display new entry form /addpic
     getNewPic : function(request, response){
         //display the picture entry form
         templateData = {
@@ -57,9 +57,37 @@ module.exports = {
         picture.save();
 
         // redirect to show the single post
-       // response.redirect('/entry/' + blogPostData.urlslug);
+        response.redirect('/');
+       // response.redirect('/picture/' + picData.date);
 
     },
+    
+//     getPicByDate : function(request, response){
+//         // Get the request picture by date
+//         db.Picture.findOne({ date : request.params.date }).populate('url').run(function(err, picture){
+// 
+//             if (err) {
+//                 console.log(err);
+//                 response.send("an error occurred!");
+//             }
+// 
+//             if (picture == null ) {
+//                 console.log('picture not found');
+//                 response.send("uh oh, can't find that picture");
+// 
+//             }   
+//                 templateData = {
+//                     picture : picture,
+//                     layout : 'layout.html'// use single entry layout
+//                     
+//                 }
+//                 console.log(templateData);
+//                 
+//                 response.render('blog/blog_single_entry.html', templateData);
+//                 
+//             }
+//         });
+//     },
     
  //  getPicById : function(request, response) {
 // 

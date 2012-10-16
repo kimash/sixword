@@ -28,11 +28,14 @@ module.exports = function(app) {
     // receive picture form submission
     app.post('/addPic', ensureAuthenticated, siteRoute.postNewPic);
     
+    //get pic by date
+    app.get("/picture/:date", siteRoute.getPicByDate);
+    
     // .findById example
     // Get a picture by its unique objectId (._id)
-    //app.get("/findPic/:picId", siteRoute.getPicById);
+    //app.get("/picture/:picId", siteRoute.getPicById);
     
-    // add a comment to a blog post
+    // add a caption to a picture
     //app.post('/caption', siteRoute.postCaption );
     
     /*********** BLOG ROUTES ************/
