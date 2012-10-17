@@ -10,7 +10,7 @@ var passport = require('passport')
 // require('./models/blogpost').configureSchema(Schema, mongoose);
 // 
 // // Define your DB Model variables
-// var BlogPost = mongoose.model('BlogPost');
+ var BlogPost = mongoose.model('BlogPost');
 // var Comment = mongoose.model('Comment');
 
 require('./models/picture').configureSchema(Schema, mongoose);
