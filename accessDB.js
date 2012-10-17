@@ -15,6 +15,7 @@ var passport = require('passport')
 
 require('./models/picture').configureSchema(Schema, mongoose);
 var Picture = mongoose.model('Picture');
+var Caption = mongoose.model('Caption');
 var Comment = mongoose.model('Comment'); 
 
 //Alternative way to load model
