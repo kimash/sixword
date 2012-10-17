@@ -7,7 +7,7 @@ var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
 //BlogPost Schema
-// require('./models/blogpost').configureSchema(Schema, mongoose);
+ require('./models/blogpost').configureSchema(Schema, mongoose);
 // 
 // // Define your DB Model variables
  var BlogPost = mongoose.model('BlogPost');
