@@ -7,14 +7,15 @@ var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
 //BlogPost Schema
-require('./models/blogpost').configureSchema(Schema, mongoose);
-
-// Define your DB Model variables
-var BlogPost = mongoose.model('BlogPost');
-var Comment = mongoose.model('Comment');
+// require('./models/blogpost').configureSchema(Schema, mongoose);
+// 
+// // Define your DB Model variables
+// var BlogPost = mongoose.model('BlogPost');
+// var Comment = mongoose.model('Comment');
 
 require('./models/picture').configureSchema(Schema, mongoose);
 var Picture = mongoose.model('Picture');
+var Comment = mongoose.model('Comment'); 
 
 //Alternative way to load model
 var User = require('./models/user'); // User model
@@ -57,7 +58,9 @@ module.exports = {
   Comment : Comment,
 
   Picture : Picture,
-
+  Caption : Caption,
+  Comment : Comment,
+  
   // DB Helper functions
   // initialize DB
   startup: function(dbToUse) {
