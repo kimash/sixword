@@ -54,6 +54,16 @@ app.configure(function() {
 
 });
 
+/*
+app.get('/about', function(request, response) {
+	var templateData = {
+				layout: 'layout.html'
+		};
+  response.render('about.html',templateData);
+});
+
+*/
+
 app.get('/', function(request, response) {
 
 	var query = SixWordIt.findOne({});
