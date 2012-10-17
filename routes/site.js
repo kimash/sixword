@@ -8,22 +8,30 @@ var db = require('../accessDB');
 module.exports = {
 
     mainpage : function(request, response) {
-    //Change query to findOne for today's picture. Below is a placeholder.
-     // build the query
-        var query = db.BlogPost.find({});
-        query.populate('author');
-        query.sort('date',-1); //sort by date in descending order
-        
-        // run the query and display main.html template if successful
-        query.exec({}, function(err, allPosts){
-            // prepare template data
-            templateData = {
-                posts : allPosts
-            };
+     // find the most recent picture from the database
+     	var today = new Date();
+     	//today = setDate(0);
+        var todaysPic = db.Picture.findOne({ date : today }).populate('url');
+            
+            todaysPic.run(function(err, picture){
 
-            // render the template with the data above
-            response.render('site/main.html', templateData);
+            if (err) {
+                console.log(err);
+                response.send("an error occurred!");
+            }
 
+            if (picture == null ) {
+                console.log('picture not found');
+                response.send("uh oh, can't find that picture");
+
+            }   
+                templateData = {
+                    picture : picture,
+                    layout : 'layout.html'// use single entry layout   
+                }
+                
+                console.log(picture);
+                response.render('site/main.html', templateData);  
         });
 
     },
