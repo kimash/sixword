@@ -11,7 +11,7 @@ var passport = require('passport')
 // 
 // // Define your DB Model variables
  var BlogPost = mongoose.model('BlogPost');
-// var Comment = mongoose.model('Comment');
+ var Comments = mongoose.model('Comments');
 
 require('./models/picture').configureSchema(Schema, mongoose);
 var Picture = mongoose.model('Picture');
