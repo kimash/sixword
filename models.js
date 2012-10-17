@@ -1,26 +1,23 @@
 // export Schemas to web.js
-
 module.exports.configureSchema = function(Schema, mongoose) {
     
     // Comment - is an embedded document for BlogPost
-    Comments = new Schema({
+    Captions = new Schema({
       name      : String
+    , email     : String
     , text      : String
     , date      : { type: Date, default: Date.now }
     });
     
     // BlogPost - 
-    var BlogPost = new Schema({
-      title     : String
-    , urlslug   : String
-    , content   : String
+    var SixWordIt = new Schema({
+      url     : String
     , date      : { type: Date, default: Date.now }
-    , comments  : [Comments]
-    , author      : { type: Schema.ObjectId, ref: 'User' }
+    , captions  : [Captions]
     });
 
     // add schemas to Mongoose
-    mongoose.model('BlogPost', BlogPost);
-    mongoose.model('Comments', Comments);
+    mongoose.model('SixWordIt', SixWordIt);
+    mongoose.model('Captions', Captions);
 
 };

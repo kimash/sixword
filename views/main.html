@@ -1,0 +1,184 @@
+<div class="logo" id="top">
+<img src="../img/logotrans.png"/>
+</div>
+<h1>Six words can tell a story.</h1>
+<!--place caption submit form here-->
+<div class="addcaption">
+	<h1>Add Caption</h1>	 
+		<!--<legend>Text input</legend>-->
+	       <select id = "punc1">
+	          <option value = "" selected="selected"> </option>
+	         <option value = "'">'</option>
+
+	       </select>       
+
+
+				<input type="text" 
+				id="input1" 
+				placeholder = "word" 
+				maxlength="24"
+				size="8"
+				class="word"
+				/>
+
+
+	             <select id = "punc2">
+	        <option value = " " selected="selected"> </option>
+	         <option value = "'">'</option>
+	         <option value = ".">.</option>
+	         <option value = ",">,</option>
+	         <option value = ";">;</option>
+	         <option value = ":">:</option>
+	         <option value = "?">?</option>
+	         <option value = "-">-</option>
+	         <option value = "!">!</option>
+
+	             </select>
+
+
+			<input type="text" 
+			id="input2" 
+			placeholder = "word" 
+			maxlength="24"
+			size="8"
+				class="word"
+			/>
+
+	           <select id = "punc3">
+	         <option value = " " selected="selected"> </option>
+	         <option value = "'">'</option>
+	         <option value = ".">.</option>
+	         <option value = ",">,</option>
+	         <option value = ";">;</option>
+	         <option value = ":">:</option>
+	         <option value = "?">?</option>
+	         <option value = "-">-</option>
+	         <option value = "!">!</option>
+
+	           </select>
+
+
+				<input type="text" 
+				id="input3" 
+				placeholder = "word" 
+				maxlength="24"
+				size="8"
+				class="word"
+				/>
+
+	         <select id = "punc4">
+	         <option value = " " selected="selected"> </option>
+	         <option value = "'">'</option>
+	         <option value = ".">.</option>
+	         <option value = ",">,</option>
+	         <option value = ";">;</option>
+	         <option value = ":">:</option>
+	         <option value = "?">?</option>
+	         <option value = "-">-</option>
+	         <option value = "!">!</option>
+
+	         </select>
+
+
+				<input type="text" 
+				id="input4" 
+				placeholder = "word"
+				maxlength="24"
+				size="8"
+				class="word"
+				/>
+
+	       <select id = "punc5">
+	         <option value = " " selected="selected"> </option>
+	         <option value = "'">'</option>
+	         <option value = ".">.</option>
+	         <option value = ",">,</option>
+	         <option value = ";">;</option>
+	         <option value = ":">:</option>
+	         <option value = "?">?</option>
+	         <option value = "-">-</option>
+	         <option value = "!">!</option>
+
+	       </select>
+
+	      	<input type="text" 
+			id="input5" 
+			placeholder = "word" 
+			maxlength="24"
+			size="8"
+				class="word"
+			/>
+
+	     <select id = "punc6">
+	         <option value = " " selected="selected"> </option>
+	         <option value = "'">'</option>
+	         <option value = ".">.</option>
+	         <option value = ",">,</option>
+	         <option value = ";">;</option>
+	         <option value = ":">:</option>
+	         <option value = "?">?</option>
+	         <option value = "-">-</option>
+	         <option value = "!">!</option>
+
+	     </select>
+
+	    	<input type="text" 
+			id="input6" 
+			placeholder = "word" 
+			maxlength="24"
+			size="8"
+				class="word"
+			/>
+
+	   <select id = "punc7">
+	         <option value = " " selected="selected"> </option>
+	         <option value = "'">'</option>
+	         <option value = ".">.</option>
+	         <option value = ",">,</option>
+	         <option value = ";">;</option>
+	         <option value = ":">:</option>
+	         <option value = "?">?</option>
+	         <option value = "-">-</option>
+	         <option value = "!">!</option>
+
+	   </select>
+	</p>
+	<p>
+		<input type="text" 
+		id="nameInput" 
+		placeholder = "Your Name"
+		maxlength="24"
+		size="24"
+		/>
+
+		<input type="email" 
+		id="emailInput" 
+		placeholder = "Email Address (Optional)"
+		maxlength="48"
+		size="24"
+		/>
+	</p>
+			<button id="addCaptionbtn"> Submit
+			          </button>
+
+					<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>				
+
+
+					
+	</div>
+
+<div class="todaysPic">
+<img src="<%= picture.url %>">
+</div>
+
+	<!--end caption form-->
+	<div id="allCaptions">
+		<% if (picture.captions) {  for(i=picture.captions.length-1;i>=0;i--){%>
+			<div class="eachCaption">
+				<p><h3><%= picture.captions[i].text %></h3>
+				<%= picture.captions[i].name %><br/>
+				<%= picture.captions[i].email %><br/>
+				<%= picture.captions[i].date %></p>
+			</div>
+		<% } } %>
+	</div>

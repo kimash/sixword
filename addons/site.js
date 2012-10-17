@@ -11,7 +11,23 @@ module.exports = {
      // find the most recent picture from the database
      	//var today = new Date();
      	//today = setDate(0);
-        var todaysPic = db.Picture.findOne({ _id : -1 }).populate('url');
+     	/*var query = db.Picture.findOne({ });
+        query.populate('url');
+        query.sort('date',-1);
+        query.exec(function (err, picture) {
+
+
+          // prepare template data
+          templateData = {
+              	picture : picture,
+                layout : 'layout.html'// use single entry layout 
+          };
+			console.log(templateData);
+          // render the card_form template with the data above
+          response.render('site/main.html', templateData);
+
+        });
+        /*var todaysPic = db.Picture.findOne({}).populate('url');
             
             todaysPic.run(function(err, picture){
 
@@ -26,13 +42,25 @@ module.exports = {
 
             }   
                 templateData = {
-                    picture : picture,
+                    //picture : picture,
                     layout : 'layout.html'// use single entry layout   
                 }
                 
                 console.log(picture);
                 response.render('site/main.html', templateData);  
+        });*/
+       var query = db.Picture.find({});
+        query.populate('url');
+        query.sort('date',-1); //sort by date in descending order
+
+        // run the query and display blog_main.html template if successful
+        query.exec({}, function(err, allPosts){
+            
+           conosole.log(allPosts);
+
         });
+
+        response.render('site/main.html');
 
     },
     
