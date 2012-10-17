@@ -9,9 +9,9 @@ module.exports = {
 
     mainpage : function(request, response) {
      // find the most recent picture from the database
-     	var today = new Date();
+     	//var today = new Date();
      	//today = setDate(0);
-        var todaysPic = db.Picture.findOne({ date : today }).populate('url');
+        var todaysPic = db.Picture.findOne({ _id : -1 }).populate('url');
             
             todaysPic.run(function(err, picture){
 
