@@ -15,22 +15,26 @@
 h1,h2,h3{
     margin-top: 50px;
     padding: 0;
-    font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
     color: #085476;
 }
 
 h1{
+	
+	font: Georgia, serif;
     font-size: 36px;
     
 }
 
 h2{
+	font-family: Helvetica, Arial, sans-serif;
     font-size: 26px;
 }
 
 h3{
+	font: Georgia, serif;
     font-size: 22px;
+	-webkit-margin-after: 0em;
 }
 
 p,ul{
@@ -50,5 +54,10 @@ p,ul{
 }
 #skill{
     background: gray;
+}
+
+hr {
+  background-color: #085476;
+  color: #085476;
 }
 
