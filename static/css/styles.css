@@ -1,5 +1,6 @@
  body {
-    margin-top: 50px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     margin-left: 200px;
     margin-right: 200px;
     padding:0;
@@ -12,7 +13,7 @@
     }
     
 h1,h2,h3{
-    margin-top: 50px;
+    margin-top: 10px;
     padding: 0;
     font-weight: bold;
     color: #085476;
@@ -56,6 +57,7 @@ p,ul{
 }
 
 hr {
-  background-color: #085476;
   color: #085476;
+  background-color: #085476;
+  height: 2px;
 }
